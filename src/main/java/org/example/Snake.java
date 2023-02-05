@@ -1,5 +1,7 @@
 package org.example;
 
+import static org.example.Configuration.N;
+
 public class Snake {
     // Fields
     int x, y; // Coordinates of the snake's head
@@ -9,15 +11,31 @@ public class Snake {
     int anabolicDose; // Current dose of anabolics
     Direction direction; // Direction of the snake's movement (up, down, left, right)
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
     // Constructor
-    public Snake(int x, int y, int length, int width, int speed, Direction direction) {
+    public Snake(int x, int y) {
         this.x = x;
         this.y = y;
         this.anabolicDose=0;
-        this.length = length;
-        this.width = width;
-        this.speed = speed;
-        this.direction = direction;
+        this.length = 1;
+        this.width = 1;
+        this.speed = 1;
+        this.direction = Direction.UP;
     }
 
     // Methods
@@ -25,12 +43,16 @@ public class Snake {
         // Update the snake's position based on its current direction
         if (direction == Direction.UP) {
             y--;
+            y=y%N;
         } else if (direction == Direction.DOWN) {
             y++;
+            y=y%N;
         } else if (direction == Direction.LEFT) {
             x--;
+            x=x%N;
         } else if (direction == Direction.RIGHT) {
             x++;
+            x=x%N;
         }
     }
 
