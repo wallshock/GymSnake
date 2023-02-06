@@ -27,6 +27,14 @@ public class Snake {
         return direction;
     }
 
+    public int[][] getX() {
+        return x;
+    }
+
+    public int[][] getY() {
+        return y;
+    }
+
     // Constructor
     public Snake(int[][] x, int[][] y) {
         this.x = x;
@@ -102,7 +110,7 @@ public class Snake {
     public void setAnabolicDose(int dose) {
         this.anabolicDose = dose;
     }
-
+//todo figure out how to expand the snake correctly
     public void expand() {
         width += 2;
     }

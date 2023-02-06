@@ -17,10 +17,6 @@ public class Map {
         items[x][y] = item;
     }
 
-    public int getN() {
-        return N;
-    }
-
     // Method to remove an item from the map
     public void removeItem(int x, int y) {
         items[x][y] = null;
@@ -53,19 +49,21 @@ public class Map {
     public void update() {
         // Move the snake and update its position on the map
         snake.move();
-        int snakeX = snake.getX();
-        int snakeY = snake.getY();
+        int[] snakeX = snake.getX()[0];
+        int[] snakeY = snake.getY()[0];
 
         // Check if the snake intersects with any item on the map
-        Item item = items[snakeX][snakeY];
-        if (item != null) {
-            item.applyEffect(snake);
-            removeItem(snakeX, snakeY);
-            //todo make it not rng to existing object
-            int posX=(int) (Math.random() * N);
-            int posY =(int) (Math.random() * N);
+        for(int i=0;i<snake.width;i++) {
+            Item item = items[snakeX[i]][snakeY[i]];
+            if (item != null) {
+                item.applyEffect(snake);
+                removeItem(snakeX[i], snakeY[i]);
+                //todo make it not rng to existing object
+                int posX = (int) (Math.random() * N);
+                int posY = (int) (Math.random() * N);
 
-            addItem(Map.randomItem(posX,posY),posX,posY);
+                addItem(Map.randomItem(posX, posY), posX, posY);
+            }
         }
     }
 
