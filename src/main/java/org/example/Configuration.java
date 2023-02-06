@@ -8,13 +8,18 @@ public class Configuration {
 
     public static int N;
     public static int P;
-
-    public Configuration(int LethalDose, int MaximumSpeedLimit, int BonusLength, int BonusSpeed,int BackLength,int MapSize) {
+    public static int IL;
+    public static int IW;
+    public static int IS;
+    public Configuration(int LethalDose, int MaximumSpeedLimit, int BonusLength, int BonusSpeed, int BackLength, int MapSize, int InitialLength, int InitialWidth, int InitialSpeed) {
         LD = LethalDose;
         VMax = MaximumSpeedLimit;
         BD = BonusLength;
         BP =BonusSpeed;
         P = BackLength;
         N=MapSize;
+        IL = InitialLength;
+        IW = InitialWidth;
+        IS = InitialSpeed;
     }
 }

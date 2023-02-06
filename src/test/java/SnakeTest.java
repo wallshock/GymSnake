@@ -1,20 +1,19 @@
 import org.example.Configuration;
 import org.example.Direction;
 import org.example.Snake;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class SnakeTest {
     @Test
     void ConstructorTest(){
-        Configuration testCfg = new Configuration(1,1,1,1,1,10);
+        Configuration testCfg = new Configuration(1,1,1,1,1,10, InitialLength, InitialWidth, InitialSpeed);
         Snake snake = new Snake(5, 5);
         assertEquals(5, snake.getX());
         assertEquals(5, snake.getY());
     }
     @Test
     void MoveTest(){
-        Configuration testCfg = new Configuration(1,1,1,1,1,10);
+        Configuration testCfg = new Configuration(1,1,1,1,1,10, InitialLength, InitialWidth, InitialSpeed);
         Snake snake = new Snake(5, 5);
         snake.move();
         assertEquals(5, snake.getX());
@@ -23,7 +22,7 @@ public class SnakeTest {
 
     @Test
     void ChangeDirectionTest(){
-        Configuration testCfg = new Configuration(1,1,1,1,1,10);
+        Configuration testCfg = new Configuration(1,1,1,1,1,10, InitialLength, InitialWidth, InitialSpeed);
         Snake snake = new Snake(5, 5);
         snake.changeDirection(Direction.RIGHT);
         snake.move();
@@ -32,7 +31,7 @@ public class SnakeTest {
     }
     @Test
     void MapBoundaryTest() {
-        Configuration testCfg = new Configuration(1,1,1,1,1,10);
+        Configuration testCfg = new Configuration(1,1,1,1,1,10, InitialLength, InitialWidth, InitialSpeed);
         Snake snake = new Snake(4, 4);
         snake.changeDirection(Direction.DOWN);
         snake.move();
