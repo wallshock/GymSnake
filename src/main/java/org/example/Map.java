@@ -1,9 +1,12 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class Map {
     private static final double NUM_ITEM_TYPES = 6;
     private int N; // Size of the map
     private Snake snake; // Snake object
+    private Item[] backpack;
     private Item[][] items; // 2D array to store all the items on the map
 
     public Map(int N, Snake snake) {
@@ -49,25 +52,33 @@ public class Map {
     public void update() {
         // Move the snake and update its position on the map
         snake.move();
-        int[] snakeX = snake.getX()[0];
-        int[] snakeY = snake.getY()[0];
+        ArrayList<Integer> snakeX = snake.getX().get(0);
+        ArrayList<Integer> snakeY = snake.getY().get(0);
 
         // Check if the snake intersects with any item on the map
         for(int i=0;i<snake.width;i++) {
-            Item item = items[snakeX[i]][snakeY[i]];
+            Item item = items[snakeX.get(i)][snakeY.get(i)];
             if (item != null) {
                 item.applyEffect(snake);
-                removeItem(snakeX[i], snakeY[i]);
-                //todo make it not rng to existing object
+                removeItem(snakeX.get(i), snakeY.get(i));
                 int posX = (int) (Math.random() * N);
                 int posY = (int) (Math.random() * N);
+                if(this.isOccupied(posX,posY)){
+                    addItem(Map.randomItem(posX, posY), posX, posY);
+                }
 
-                addItem(Map.randomItem(posX, posY), posX, posY);
+
             }
         }
     }
+//todo we have to do map NxN
+    //todo add observers to notify map about position changed of the snake
+    private boolean isOccupied(int posX, int posY) {
+        return false;
+    }
 
-
-
+    private boolean CheckForSteroidApplication() {
+        return false;
+    }
 
 }

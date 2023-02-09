@@ -1,14 +1,20 @@
 package org.example;
 
+import java.util.ArrayList;
+
 import static org.example.Configuration.*;
 
 public class Snake {
     // Fields
-    int[][] x, y; // Coordinates of the snake's head
+    ArrayList<ArrayList<Integer>> x;
+    ArrayList<ArrayList<Integer>> y;
+    // Coordinates of the snake's head
     int length; // Length of the snake
     int width; // Width of the snake
     int speed; // Speed of the snake's movement
     int anabolicDose; // Current dose of anabolics
+
+    Direction prevdirection;
     Direction direction; // Direction of the snake's movement (up, down, left, right)
 
 //    public int getX() {
@@ -27,57 +33,55 @@ public class Snake {
         return direction;
     }
 
-    public int[][] getX() {
+    public ArrayList<ArrayList<Integer>> getX() {
         return x;
     }
 
-    public int[][] getY() {
+    public ArrayList<ArrayList<Integer>> getY() {
         return y;
     }
 
     // Constructor
-    public Snake(int[][] x, int[][] y) {
+    public Snake(ArrayList<ArrayList<Integer>> x, ArrayList<ArrayList<Integer>> y) {
         this.x = x;
         this.y = y;
         this.anabolicDose=0;
         this.length = IL;
         this.width = IW;
         this.speed = IS;
+        this.prevdirection= Direction.UP;
         this.direction = Direction.UP;
     }
 
-    // Methods
+    //todo we have to handle how to make the snake with width!=1 move correctly
     public void move() {
         for (int i = this.length - 1; i > 0; i--) {
             for(int j=0; j<this.width;j++) {
-                this.x[i][j] = this.x[i - 1][j];
-                this.y[i][j] = this.y[i - 1][j];
+                this.x.get(i).set(j,this.x.get(i - 1).get(j));
+                this.y.get(i).set(j,this.y.get(i - 1).get(j));
             }
         }
 
+        //todo here we have to manage that somehow
         switch (this.direction) {
             case UP:
                 for(int j=0; j<this.width;j++) {
-                    this.y[0][j] -= this.speed;
-                    this.y[0][j] = this.y[0][0] % N;
+                    this.y.get(0).set(j,(this.y.get(0).get(j)-this.speed)%N);
                 }
                 break;
             case DOWN:
                 for(int j=0; j<this.width;j++) {
-                    this.y[0][0] += this.speed;
-                    this.y[0][0] = this.y[0][0] % N;
+                    this.y.get(0).set(j,(this.y.get(0).get(j)+this.speed)%N);
                 }
                 break;
             case LEFT:
                 for(int j=0; j<this.width;j++) {
-                    this.x[0][0] -= this.speed;
-                    this.x[0][0] = this.x[0][0] % N;
+                    this.x.get(0).set(j,(this.x.get(0).get(j)-this.speed)%N);
                 }
                 break;
             case RIGHT:
                 for(int j=0; j<this.width;j++) {
-                    this.x[0][0] += this.speed;
-                    this.x[0][0] = this.x[0][0] % N;
+                    this.x.get(0).set(j,(this.x.get(0).get(j)+this.speed)%N);
                 }
                 break;
         }
@@ -112,6 +116,7 @@ public class Snake {
     }
 //todo figure out how to expand the snake correctly
     public void expand() {
+
         width += 2;
     }
 }
