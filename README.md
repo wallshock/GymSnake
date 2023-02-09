@@ -2,7 +2,7 @@
 
 ## Cel projektu
 
-Celem projektu jest zrobienie gry bazowanej na klasycznym snake'u. Nie będzie to jednak zwykły wąż - nasz jest fanem sterydów anaboliczno-androgennych - czyli szeroko pojętych treningów. Gminna wieść niesie, że wąż jest absolwentem kierunku "kulturystyka" na wydziale wszystkiego dobrego UJ.
+Celem projektu jest zrobienie gry bazowanej na klasycznym snake'u. Nie będzie to jednak zwykły wąż - nasz jest fanem sterydów anaboliczno-androgennych - czyli szeroko pojętych treningów. Gminna wieść niesie, że wąż jest absolwentem kierunku "kulturystyka" na wydziale UJ.
 
 ## Opis mapy
 
