@@ -2,7 +2,7 @@
 
 ## Cel projektu
 
-Celem projektu jest zrobienie gry bazowanej na klasycznym snake'u. Nie będzie to jednak zwykły wąż - nasz jest fanem sterydów anaboliczno-androgennych - czyli szeroko pojętych treningów. Gminna wieść niesie, że wąż jest absolwentem kierunku "kulturystyka" na wydziale wszystkiego dobrego UJ.
+Celem projektu jest zrobienie gry bazowanej na klasycznym snake'u. Nie będzie to jednak zwykły wąż - nasz jest fanem sterydów anaboliczno-androgennych - czyli szeroko pojętych treningów. Gminna wieść niesie, że wąż jest absolwentem kierunku "kulturystyka" na wydziale UJ.
 
 ## Opis mapy
 
@@ -21,7 +21,7 @@ Specjalna akcja następuje gdy głowa węża dotknie odwłoku (z zadanym offsete
 Po udanej iniekcji nasz wąż rozszerza się - tj. jego szerokośc nie wynosi już 1 kratki - rośnie proporcjonalnie z obu stron (3, 5, 7... kratek). Należy zaznaczyć, że głowa również wtedy robi się szersza - więc obszar interakcji z przedmiotami wzrasta.
 Jeśli zaaplikowana dawka przekracza 1/2 LD wtedy dostajemy również bonus do prędkości oraz długości węża.
 
-W przypadku gdy nasz wąż dotknie granic mapy gra nie kończy się. (Jednak karą jest wstrzyknięcie sobie w tym momencie wszystkich środków, które oczekują na zaaplikowanie) Wygląda to tak, że jego głowa przechodzi na drugą stronę.
+W przypadku gdy nasz wąż dotknie granic mapy gra nie kończy się. Wygląda to tak, że jego głowa przechodzi na drugą stronę.
 
 Rozgrywka jest typu endless runner - próbujemy uzyskać jak najdłuższego i jak najszerszego (sic!) węża jednocześnie unikając śmiertelnej dawki anabolików.
 Po każdej interakcji z dowolnym przedmiotem na mapie pojawia się nowy losowy element w losowym miejscu (Z zaznaczeniem, że nie może pojawić się na wężu.)
