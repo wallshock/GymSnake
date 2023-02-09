@@ -1,7 +1,7 @@
 package org.example;
 
 import static org.example.Configuration.LD;
-
+import org.example.interfaces.Item;
 public class MongolianSalesman implements Item {
 
     public final int x;

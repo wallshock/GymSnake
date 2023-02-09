@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.interfaces.Item;
+
 import static org.example.Configuration.*;
 
 public class Deadlift implements Item {

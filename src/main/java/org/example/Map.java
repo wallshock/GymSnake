@@ -1,10 +1,14 @@
 package org.example;
 
+import org.example.interfaces.Item;
+
 import java.util.ArrayList;
 
 public class Map {
     private static final double NUM_ITEM_TYPES = 6;
     private int N; // Size of the map
+    char[][] map;
+
     private Snake snake; // Snake object
     private Item[] backpack;
     private Item[][] items; // 2D array to store all the items on the map
@@ -13,8 +17,17 @@ public class Map {
         this.N = N;
         this.snake = snake;
         items = new Item[N][N];
+        map = new char[N][N];
+        fillTheMap();
     }
 
+    public void fillTheMap(){
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                map[i][j] = 'X';
+            }
+        }
+    }
     // Method to add an item to the map
     public void addItem(Item item, int x, int y) {
         items[x][y] = item;
@@ -24,24 +37,25 @@ public class Map {
     public void removeItem(int x, int y) {
         items[x][y] = null;
     }
-    public static Item randomItem(int x,int y) {
+
+    public static Item randomItem(int x, int y) {
         // Generate a random number between 0 and the number of item types
         int itemType = (int) (Math.random() * NUM_ITEM_TYPES);
 
         // Create and return the item based on the random number
         switch (itemType) {
             case 0:
-                return new Bench(x,y);
+                return new Bench(x, y);
             case 1:
-                return new Deadlift(x,y);
+                return new Deadlift(x, y);
             case 2:
-                return new Testosterone(x,y);
+                return new Testosterone(x, y);
             case 3:
-                return new Proviron(x,y);
+                return new Proviron(x, y);
             case 4:
-                return new Winstrol(x,y);
+                return new Winstrol(x, y);
             case 5:
-                return new MongolianSalesman(x,y);
+                return new MongolianSalesman(x, y);
             default:
                 throw new IllegalArgumentException("Invalid item type: " + itemType);
         }
@@ -56,14 +70,14 @@ public class Map {
         ArrayList<Integer> snakeY = snake.getY().get(0);
 
         // Check if the snake intersects with any item on the map
-        for(int i=0;i<snake.width;i++) {
+        for (int i = 0; i < snake.width; i++) {
             Item item = items[snakeX.get(i)][snakeY.get(i)];
             if (item != null) {
                 item.applyEffect(snake);
                 removeItem(snakeX.get(i), snakeY.get(i));
                 int posX = (int) (Math.random() * N);
                 int posY = (int) (Math.random() * N);
-                if(this.isOccupied(posX,posY)){
+                if (this.isOccupied(posX, posY)) {
                     addItem(Map.randomItem(posX, posY), posX, posY);
                 }
 
@@ -71,7 +85,8 @@ public class Map {
             }
         }
     }
-//todo we have to do map NxN
+
+    //todo map NxN
     //todo add observers to notify map about position changed of the snake
     private boolean isOccupied(int posX, int posY) {
         return false;
@@ -81,4 +96,10 @@ public class Map {
         return false;
     }
 
+    public void print(){
+        for(int g=0;g<N;g++){
+            System.out.println(map[g]);
+        }
+    }
 }
+
