@@ -62,32 +62,65 @@ public class Snake {
             }
         }
 
-        //todo here we have to manage that somehow
+        //todo please test this
         switch (this.direction) {
             case UP:
-                for(int j=0; j<this.width;j++) {
-                    this.y.get(0).set(j,(this.y.get(0).get(j)-this.speed)%N);
+                if(prevdirection == Direction.RIGHT) {
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)- ((this.width-1)-j))) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) - 1-j)) % N);
+                    }
+                }else{
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)+j)) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) - (this.width)+j)) % N);
+                    }
                 }
                 break;
             case DOWN:
-                for(int j=0; j<this.width;j++) {
-                    this.y.get(0).set(j,(this.y.get(0).get(j)+this.speed)%N);
+                if(prevdirection == Direction.RIGHT) {
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)-(this.width-1)+j)) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) + ((this.width)-j))) % N);
+                    }
+                }else{
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j) +(this.width-1-j))) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) +1+j) % N));
+                    }
                 }
                 break;
             case LEFT:
-                for(int j=0; j<this.width;j++) {
-                    this.x.get(0).set(j,(this.x.get(0).get(j)-this.speed)%N);
+                if(prevdirection == Direction.UP) {
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)-1-j)) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) + ((this.width)-1)+j)) % N);
+                    }
+                }else{
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)-(this.width-j))) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) - j) % N));
+                    }
                 }
                 break;
             case RIGHT:
-                for(int j=0; j<this.width;j++) {
-                    this.x.get(0).set(j,(this.x.get(0).get(j)+this.speed)%N);
+                if(prevdirection == Direction.UP) {
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)+(this.width-j))) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) + j)) % N);
+                    }
+                }else{
+                    for (int j = 0; j < this.width; j++) {
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)+1+j) % N));
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) - (this.width-1-j)) % N));
+                    }
                 }
                 break;
         }
     }
 
     public void changeDirection(Direction newDirection) {
+        prevdirection = direction;
         direction = newDirection;
     }
 

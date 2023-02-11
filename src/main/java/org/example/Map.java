@@ -87,7 +87,6 @@ public class Map {
     }
 
     //todo map NxN
-    //todo add observers to notify map about position changed of the snake
     private boolean isOccupied(int posX, int posY) {
         return false;
     }
