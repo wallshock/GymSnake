@@ -62,7 +62,6 @@ public class Snake {
             }
         }
 
-        //todo please test this
         switch (this.direction) {
             case UP:
                 if(prevdirection == Direction.RIGHT) {
@@ -70,38 +69,54 @@ public class Snake {
                         this.x.get(0).set(j, ((this.x.get(0).get(j)- ((this.width-1)-j))) % N);
                         this.y.get(0).set(j, ((this.y.get(0).get(j) - 1-j)) % N);
                     }
-                }else{
+                }else if(prevdirection == Direction.LEFT){
                     for (int j = 0; j < this.width; j++) {
                         this.x.get(0).set(j, ((this.x.get(0).get(j)+j)) % N);
                         this.y.get(0).set(j, ((this.y.get(0).get(j) - (this.width)+j)) % N);
                     }
+                }else{
+                    for (int j = 0; j < this.width; j++){
+                        this.y.get(0).set(j,(this.y.get(0).get(j)-1)%N);
+                    }
                 }
+                prevdirection = Direction.UP;
                 break;
             case DOWN:
                 if(prevdirection == Direction.RIGHT) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)-(this.width-1)+j)) % N);
+                        this.x.get(0).set(j, ((this.x.get(0).get(j)-j)) % N);
                         this.y.get(0).set(j, ((this.y.get(0).get(j) + ((this.width)-j))) % N);
                     }
-                }else{
+                }else if(prevdirection == Direction.LEFT){
                     for (int j = 0; j < this.width; j++) {
                         this.x.get(0).set(j, ((this.x.get(0).get(j) +(this.width-1-j))) % N);
                         this.y.get(0).set(j, ((this.y.get(0).get(j) +1+j) % N));
                     }
+                }else{
+                    for (int j = 0; j < this.width; j++){
+                        this.y.get(0).set(j,(this.y.get(0).get(j)+1)%N);
+                    }
                 }
+                prevdirection = Direction.DOWN;
                 break;
             case LEFT:
                 if(prevdirection == Direction.UP) {
                     for (int j = 0; j < this.width; j++) {
                         this.x.get(0).set(j, ((this.x.get(0).get(j)-1-j)) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) + ((this.width)-1)+j)) % N);
+                        this.y.get(0).set(j, ((this.y.get(0).get(j) +(this.width-1-j))) % N);
                     }
-                }else{
+                }else if(prevdirection == Direction.DOWN){
                     for (int j = 0; j < this.width; j++) {
                         this.x.get(0).set(j, ((this.x.get(0).get(j)-(this.width-j))) % N);
                         this.y.get(0).set(j, ((this.y.get(0).get(j) - j) % N));
                     }
                 }
+                else{
+                    for (int j = 0; j < this.width; j++){
+                        this.x.get(0).set(j,(this.x.get(0).get(j)-1)%N);
+                    }
+                }
+                prevdirection = Direction.LEFT;
                 break;
             case RIGHT:
                 if(prevdirection == Direction.UP) {
@@ -109,12 +124,18 @@ public class Snake {
                         this.x.get(0).set(j, ((this.x.get(0).get(j)+(this.width-j))) % N);
                         this.y.get(0).set(j, ((this.y.get(0).get(j) + j)) % N);
                     }
-                }else{
+                }else if(prevdirection == Direction.DOWN){
                     for (int j = 0; j < this.width; j++) {
                         this.x.get(0).set(j, ((this.x.get(0).get(j)+1+j) % N));
                         this.y.get(0).set(j, ((this.y.get(0).get(j) - (this.width-1-j)) % N));
                     }
                 }
+                else{
+                    for (int j = 0; j < this.width; j++){
+                        this.x.get(0).set(j,(this.x.get(0).get(j)+1)%N);
+                    }
+                }
+                prevdirection = Direction.RIGHT;
                 break;
         }
     }
@@ -151,5 +172,9 @@ public class Snake {
     public void expand() {
 
         width += 2;
+    }
+
+    public Direction getPrevdirection() {
+        return prevdirection;
     }
 }
