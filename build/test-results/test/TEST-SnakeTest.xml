@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SnakeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-12T10:44:16" hostname="DESKTOP-SMJH0E5" time="0.066">
+  <properties/>
+  <testcase name="ThickerSnakeMoveTest()" classname="SnakeTest" time="0.066"/>
+  <system-out><![CDATA[[[6, 7]]
+[[6, 6]]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
