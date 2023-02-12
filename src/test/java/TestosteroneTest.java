@@ -7,8 +7,6 @@ import org.example.Testosterone;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-//todo
 public class TestosteroneTest {
     @Test
     public void BonusTest(){

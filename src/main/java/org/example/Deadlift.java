@@ -1,10 +1,11 @@
 package org.example;
 
+import org.example.interfaces.IMapElement;
 import org.example.interfaces.Item;
 
 import static org.example.Configuration.*;
 
-public class Deadlift implements Item {
+public class Deadlift implements Item, IMapElement {
 
     public final int x;
     public final int y;
@@ -26,5 +27,10 @@ public class Deadlift implements Item {
     public void applyEffect(Snake snake) {
         // add BD to snake length
         snake.setLength(snake.getLength() + BD);
+    }
+
+    @Override
+    public String getImagePath() {
+        return null;
     }
 }

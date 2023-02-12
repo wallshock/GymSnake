@@ -7,8 +7,6 @@ import org.example.Winstrol;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-
-//todo
 public class WinstrolTest {
     @Test
     public void BonusTest(){

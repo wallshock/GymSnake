@@ -1,10 +1,12 @@
 package org.example;
 
+import org.example.interfaces.IMapElement;
+
 import java.util.ArrayList;
 
 import static org.example.Configuration.*;
 
-public class Snake {
+public class Snake implements IMapElement {
     // Fields
     ArrayList<ArrayList<Integer>> x;
     ArrayList<ArrayList<Integer>> y;
@@ -53,7 +55,6 @@ public class Snake {
         this.direction = Direction.UP;
     }
 
-    //todo we have to handle how to make the snake with width!=1 move correctly
     public void move() {
         for (int i = this.length - 1; i > 0; i--) {
             for(int j=0; j<this.width;j++) {
@@ -176,5 +177,10 @@ public class Snake {
 
     public Direction getPrevdirection() {
         return prevdirection;
+    }
+
+    @Override
+    public String getImagePath() {
+        return null;
     }
 }

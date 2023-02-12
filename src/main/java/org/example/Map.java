@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.interfaces.IMapElement;
 import org.example.interfaces.Item;
 
 import java.util.ArrayList;
@@ -7,37 +8,37 @@ import java.util.ArrayList;
 public class Map {
     private static final double NUM_ITEM_TYPES = 6;
     private int N; // Size of the map
-    char[][] map;
+    Object[][] map;
+
+    private ArrayList<Item> backpack;
 
     private Snake snake; // Snake object
-    private Item[] backpack;
     private Item[][] items; // 2D array to store all the items on the map
 
     public Map(int N, Snake snake) {
         this.N = N;
         this.snake = snake;
-        items = new Item[N][N];
-        map = new char[N][N];
+        map = new Object[N][N];
         fillTheMap();
     }
 
     public void fillTheMap(){
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                map[i][j] = 'X';
+                map[i][j] = null;
             }
         }
     }
     // Method to add an item to the map
-    public void addItem(Item item, int x, int y) {
-        items[x][y] = item;
+    public void addItem(Object item, int x, int y) {
+        map[x][y] = item;
     }
 
     // Method to remove an item from the map
     public void removeItem(int x, int y) {
-        items[x][y] = null;
+        map[x][y] = null;
     }
-
+//todo call random on map few times on star
     public static Item randomItem(int x, int y) {
         // Generate a random number between 0 and the number of item types
         int itemType = (int) (Math.random() * NUM_ITEM_TYPES);
@@ -60,7 +61,10 @@ public class Map {
                 throw new IllegalArgumentException("Invalid item type: " + itemType);
         }
     }
-
+    public void addToBackpack(Item item){
+        this.backpack.add(item);
+    }
+    //todo use all items from backpack
 
     // Method to update the map in each time interval
     public void update() {
@@ -71,13 +75,14 @@ public class Map {
 
         // Check if the snake intersects with any item on the map
         for (int i = 0; i < snake.width; i++) {
-            Item item = items[snakeX.get(i)][snakeY.get(i)];
-            if (item != null) {
-                item.applyEffect(snake);
+            Object item = map[snakeX.get(i)][snakeY.get(i)];
+            if (item instanceof Item) {
+                Item item1 = (Item) item;
+                this.addToBackpack(item1);
                 removeItem(snakeX.get(i), snakeY.get(i));
                 int posX = (int) (Math.random() * N);
                 int posY = (int) (Math.random() * N);
-                if (this.isOccupied(posX, posY)) {
+                if (!this.isOccupied(posX, posY)) {
                     addItem(Map.randomItem(posX, posY), posX, posY);
                 }
 
@@ -86,9 +91,8 @@ public class Map {
         }
     }
 
-    //todo map NxN
     private boolean isOccupied(int posX, int posY) {
-        return false;
+        return map[posY][posX] != null;
     }
 
     private boolean CheckForSteroidApplication() {

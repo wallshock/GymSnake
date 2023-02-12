@@ -1,10 +1,11 @@
 package org.example;
 
+import org.example.interfaces.IMapElement;
 import org.example.interfaces.Item;
 
 import static org.example.Configuration.*;
 
-public class Bench implements Item {
+public class Bench implements Item, IMapElement {
     public final int x;
     public final int y;
 
@@ -27,5 +28,10 @@ public class Bench implements Item {
     public void applyEffect(Snake snake) {
         // add BP to snake speed
         snake.setSpeed(snake.getSpeed() + BP);
+    }
+
+    @Override
+    public String getImagePath() {
+        return null;
     }
 }

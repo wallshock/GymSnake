@@ -1,8 +1,10 @@
 package org.example;
 
 import static org.example.Configuration.LD;
+
+import org.example.interfaces.IMapElement;
 import org.example.interfaces.Item;
-public class Proviron implements Item {
+public class Proviron implements Item, IMapElement {
     public final int x;
     public final int y;
 
@@ -24,5 +26,10 @@ public class Proviron implements Item {
     public void applyEffect(Snake snake) {
         // add 1/5th of LD to snake's anabolic dose
         snake.setAnabolicDose(snake.getAnabolicDose() + LD / 5);
+    }
+
+    @Override
+    public String getImagePath() {
+        return null;
     }
 }

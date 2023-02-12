@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-//todo
 public class DeadliftTest {
     @Test
     public void BonusTest(){
