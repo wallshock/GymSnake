@@ -183,4 +183,8 @@ public class Snake implements IMapElement {
     public String getImagePath() {
         return null;
     }
+
+    //todo find a way to extend the snake by 1 block
+    public void extend() {
+    }
 }

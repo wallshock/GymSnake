@@ -5,6 +5,8 @@ import org.example.interfaces.Item;
 
 import java.util.ArrayList;
 
+import static org.example.Configuration.*;
+
 public class Map {
     private static final double NUM_ITEM_TYPES = 6;
     private int N; // Size of the map
@@ -22,10 +24,16 @@ public class Map {
         fillTheMap();
     }
 
+    //todo test this
     public void fillTheMap(){
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 map[i][j] = null;
+            }
+        }
+        for(int i=0;i<snake.getX().size();i++){
+            for(int j=0;j<snake.getX().get(0).size();j++){
+                map[snake.getX().get(i).get(j)][snake.getY().get(i).get(j)]= new SnakeField(i);
             }
         }
     }
@@ -64,7 +72,26 @@ public class Map {
     public void addToBackpack(Item item){
         this.backpack.add(item);
     }
-    //todo use all items from backpack
+    //todo test this
+    public void injectSteroids(Snake snake) throws Exception {
+        int g = backpack.size();
+        int before = snake.getAnabolicDose();
+        for(int i = 0;i<g;i++){
+            backpack.get(0).applyEffect(snake);
+            backpack.remove(0);
+            if(snake.getAnabolicDose()>LD){
+                throw new Exception();
+            }
+        if(snake.getAnabolicDose()-before>(LD/2)){
+            applyBonus(snake);
+        }
+        }
+    }
+
+    private void applyBonus(Snake snake) {
+        snake.extend();
+        snake.setSpeed(snake.getSpeed()+1);
+    }
 
     // Method to update the map in each time interval
     public void update() {
@@ -95,6 +122,7 @@ public class Map {
         return map[posY][posX] != null;
     }
 
+    //todo check if we touched the tail
     private boolean CheckForSteroidApplication() {
         return false;
     }
