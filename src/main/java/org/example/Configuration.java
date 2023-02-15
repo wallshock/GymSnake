@@ -11,12 +11,12 @@ public class Configuration {
     public static int IL;
     public static int IW;
     public static int IS;
-    public Configuration(int LethalDose, int MaximumSpeedLimit, int BonusLength, int BonusSpeed, int BackLength, int MapSize, int InitialLength, int InitialWidth, int InitialSpeed) {
+    public Configuration(int LethalDose, int MaximumSpeedLimit, int BonusLength, int BonusSpeed, int TailLength, int MapSize, int InitialLength, int InitialWidth, int InitialSpeed) {
         LD = LethalDose;
         VMax = MaximumSpeedLimit;
         BD = BonusLength;
         BP =BonusSpeed;
-        P = BackLength;
+        P = TailLength;
         N=MapSize;
         IL = InitialLength;
         IW = InitialWidth;

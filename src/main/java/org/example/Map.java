@@ -12,7 +12,7 @@ public class Map {
     private int N; // Size of the map
     Object[][] map;
 
-    private ArrayList<Item> backpack;
+
 
     private Snake snake; // Snake object
     private Item[][] items; // 2D array to store all the items on the map
@@ -46,7 +46,17 @@ public class Map {
     public void removeItem(int x, int y) {
         map[x][y] = null;
     }
-//todo call random on map few times on star
+    
+    public void generateItems(int numberofitems){
+        for(int i=0;i<numberofitems;i++) {
+            int posX = (int) (Math.random() * N);
+            int posY = (int) (Math.random() * N);
+            if (!this.isOccupied(posX, posY)) {
+                addItem(Map.randomItem(posX, posY), posX, posY);
+            }
+        }
+        
+    }
     public static Item randomItem(int x, int y) {
         // Generate a random number between 0 and the number of item types
         int itemType = (int) (Math.random() * NUM_ITEM_TYPES);
@@ -69,29 +79,6 @@ public class Map {
                 throw new IllegalArgumentException("Invalid item type: " + itemType);
         }
     }
-    public void addToBackpack(Item item){
-        this.backpack.add(item);
-    }
-    //todo test this
-    public void injectSteroids(Snake snake) throws Exception {
-        int g = backpack.size();
-        int before = snake.getAnabolicDose();
-        for(int i = 0;i<g;i++){
-            backpack.get(0).applyEffect(snake);
-            backpack.remove(0);
-            if(snake.getAnabolicDose()>LD){
-                throw new Exception();
-            }
-        if(snake.getAnabolicDose()-before>(LD/2)){
-            applyBonus(snake);
-        }
-        }
-    }
-
-    private void applyBonus(Snake snake) {
-        snake.extend();
-        snake.setSpeed(snake.getSpeed()+1);
-    }
 
     // Method to update the map in each time interval
     public void update() {
@@ -105,27 +92,17 @@ public class Map {
             Object item = map[snakeX.get(i)][snakeY.get(i)];
             if (item instanceof Item) {
                 Item item1 = (Item) item;
-                this.addToBackpack(item1);
+                snake.addToBackpack(item1);
                 removeItem(snakeX.get(i), snakeY.get(i));
-                int posX = (int) (Math.random() * N);
-                int posY = (int) (Math.random() * N);
-                if (!this.isOccupied(posX, posY)) {
-                    addItem(Map.randomItem(posX, posY), posX, posY);
-                }
-
-
+                generateItems(1);
             }
         }
     }
 
     private boolean isOccupied(int posX, int posY) {
-        return map[posY][posX] != null;
+        return !(map[posY][posX] instanceof EmptyField);
     }
 
-    //todo check if we touched the tail
-    private boolean CheckForSteroidApplication() {
-        return false;
-    }
 
     public void print(){
         for(int g=0;g<N;g++){
