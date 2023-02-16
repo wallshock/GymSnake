@@ -21,21 +21,6 @@ public class Map {
         this.N = N;
         this.snake = snake;
         map = new Object[N][N];
-        fillTheMap();
-    }
-
-    //todo test this
-    public void fillTheMap(){
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                map[i][j] = null;
-            }
-        }
-        for(int i=0;i<snake.getX().size();i++){
-            for(int j=0;j<snake.getX().get(0).size();j++){
-                map[snake.getX().get(i).get(j)][snake.getY().get(i).get(j)]= new SnakeField(i);
-            }
-        }
     }
     // Method to add an item to the map
     public void addItem(Object item, int x, int y) {

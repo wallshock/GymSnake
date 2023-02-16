@@ -26,7 +26,8 @@ public class Deadlift implements Item, IMapElement {
     }@Override
     public void applyEffect(Snake snake) {
         // add BD to snake length
-        snake.setLength(snake.getLength() + BD);
+        //todo implement so it can handle cases for BD !=1
+        snake.extend();
     }
 
     @Override

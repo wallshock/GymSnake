@@ -10,11 +10,16 @@ import static org.example.Configuration.*;
 public class Snake implements IMapElement {
     // Fields
     ArrayList<ArrayList<Integer>> x;
-    private ArrayList<Item> backpack;
+    private ArrayList<Item> backpack = new ArrayList<Item>();
     ArrayList<ArrayList<Integer>> y;
     // Coordinates of the snake's head
     int length; // Length of the snake
-    boolean snakeExtendFlag= false;
+
+    public int getSnakeExtendAmmount() {
+        return snakeExtendAmmount;
+    }
+
+    int snakeExtendAmmount= 0;
     int width; // Width of the snake
     int speed; // Speed of the snake's movement
     int anabolicDose; // Current dose of anabolics
@@ -59,12 +64,14 @@ public class Snake implements IMapElement {
     }
 
     public void move() {
+
         for (int i = this.length - 1; i > 0; i--) {
             for(int j=0; j<this.width;j++) {
                 this.x.get(i).set(j,this.x.get(i - 1).get(j));
                 this.y.get(i).set(j,this.y.get(i - 1).get(j));
             }
         }
+
 
         switch (this.direction) {
             case UP:
@@ -178,17 +185,16 @@ public class Snake implements IMapElement {
                 prevdirection = Direction.RIGHT;
                 break;
         }
-        if(snakeExtendFlag){
+        if(snakeExtendAmmount>0){
             this.setLength(this.getLength()+1);
-            snakeExtendFlag=false;
+            snakeExtendAmmount-=1;
         }
     }
-    //todo test this
     private boolean CheckForSteroidApplication(int x, int y) {
         for(int i=0; i<P;i++){
-            for(int j=0;j<this.getX().get(-1).size();j++){
-                if(this.getX().get(-1-i).get(j)==x){
-                    if(this.getY().get(-1-i).get(j)==y){
+            for(int j=0;j<this.getX().get(getX().size()-1).size();j++){
+                if(this.getX().get(getX().size()-1-i).get(j)==x){
+                    if(this.getY().get(getY().size()-1-i).get(j)==y){
                         return true;
                     }
                 }
@@ -197,12 +203,10 @@ public class Snake implements IMapElement {
         return false;
     }
 
-    //todo test this
     public void addToBackpack(Item item){
         this.backpack.add(item);
     }
 
-    //todo test this
     public void injectSteroids() {
         int g = this.getBackpack().size();
         int before = this.getAnabolicDose();
@@ -217,7 +221,6 @@ public class Snake implements IMapElement {
             }
         }
     }
-    //todo test this
     private void applyBonus(Snake snake) {
         snake.extend();
         snake.setSpeed(snake.getSpeed()+1);
@@ -265,13 +268,12 @@ public class Snake implements IMapElement {
         return null;
     }
 
-    //todo test this
     public void extend() {
-        ArrayList<Integer> newx = this.getX().get(-1);
-        ArrayList<Integer> newy= this.getY().get(-1);
+        ArrayList<Integer> newx = this.getX().get(getX().size()-1);
+        ArrayList<Integer> newy= this.getY().get(getX().size()-1);
         this.x.add(newx);
         this.y.add(newy);
-        snakeExtendFlag=true;
+        snakeExtendAmmount +=1;
     }
 
     public ArrayList<Item> getBackpack() {

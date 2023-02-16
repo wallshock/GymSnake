@@ -1,6 +1,4 @@
-import org.example.Configuration;
-import org.example.Direction;
-import org.example.Snake;
+import org.example.*;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Array;
@@ -151,6 +149,56 @@ public class SnakeTest {
         assertEquals(6, snake.getX().get(0).get(1));
         assertEquals(4, snake.getY().get(0).get(1));
     }
-
+    @Test
+    void SteroidApplicationTest() {
+        Configuration testCfg = new Configuration(100, 1, 1, 1, 2, 10, 5, 1, 1);
+        ArrayList<ArrayList<Integer>> x = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> y = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> ys = new ArrayList<Integer>();
+        ArrayList<Integer> xs = new ArrayList<Integer>();
+        xs.add(3);
+        ys.add(3);
+        x.add(xs);
+        y.add(ys);
+        ArrayList<Integer> ys1 = new ArrayList<Integer>();
+        ArrayList<Integer> xs1 = new ArrayList<Integer>();
+        xs1.add(4);
+        ys1.add(3);
+        x.add(xs1);
+        y.add(ys1);
+        ArrayList<Integer> ys2 = new ArrayList<Integer>();
+        ArrayList<Integer> xs2 = new ArrayList<Integer>();
+        xs2.add(5);
+        ys2.add(3);
+        x.add(xs2);
+        y.add(ys2);
+        ArrayList<Integer> ys3 = new ArrayList<Integer>();
+        ArrayList<Integer> xs3 = new ArrayList<Integer>();
+        xs3.add(5);
+        ys3.add(4);
+        x.add(xs3);
+        y.add(ys3);
+        ArrayList<Integer> ys4 = new ArrayList<Integer>();
+        ArrayList<Integer> xs4 = new ArrayList<Integer>();
+        xs4.add(5);
+        ys4.add(5);
+        x.add(xs4);
+        y.add(ys4);
+        Snake snake = new Snake(x, y);
+        snake.addToBackpack(new Deadlift(2,2));
+        snake.addToBackpack(new MongolianSalesman(2,2));
+        snake.changeDirection(Direction.DOWN);
+        snake.move();
+        snake.changeDirection(Direction.RIGHT);
+        snake.move();
+        assertEquals(snake.getLength(),5);
+        snake.changeDirection(Direction.UP);
+        snake.move();
+        assertEquals(snake.getLength(),6);
+        snake.move();
+        assertEquals(snake.getLength(),7);
+        snake.move();
+        assertEquals(snake.getLength(),7);
+    }
 
 }
