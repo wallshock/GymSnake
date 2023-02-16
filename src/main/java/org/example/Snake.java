@@ -222,7 +222,7 @@ public class Snake implements IMapElement {
         }
     }
     private void applyBonus(Snake snake) {
-        snake.extend();
+        snake.extend(BD);
         snake.setSpeed(snake.getSpeed()+1);
     }
     public void changeDirection(Direction newDirection) {
@@ -268,12 +268,14 @@ public class Snake implements IMapElement {
         return null;
     }
 
-    public void extend() {
-        ArrayList<Integer> newx = this.getX().get(getX().size()-1);
-        ArrayList<Integer> newy= this.getY().get(getX().size()-1);
-        this.x.add(newx);
-        this.y.add(newy);
-        snakeExtendAmmount +=1;
+    public void extend(int n) {
+        for(int i=0;i<n;i++) {
+            ArrayList<Integer> newx = this.getX().get(getX().size() - 1);
+            ArrayList<Integer> newy = this.getY().get(getX().size() - 1);
+            this.x.add(newx);
+            this.y.add(newy);
+        }
+        snakeExtendAmmount +=n;
     }
 
     public ArrayList<Item> getBackpack() {
