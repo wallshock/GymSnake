@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+import static org.example.Configuration.N;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SnakeTest {
@@ -133,8 +134,6 @@ public class SnakeTest {
         assertEquals(6, snake.getY().get(0).get(0));
         assertEquals(7, snake.getX().get(0).get(1));
         assertEquals(6, snake.getY().get(0).get(1));
-        System.out.println(x);
-        System.out.println(y);
         snake.move();
         snake.changeDirection(Direction.LEFT);
         snake.move();
@@ -199,6 +198,47 @@ public class SnakeTest {
         assertEquals(snake.getLength(),7);
         snake.move();
         assertEquals(snake.getLength(),7);
+    }
+    @Test
+    void InitializeSnakeTest() {
+        Configuration testCfg = new Configuration(100, 2, 1, 1, 1, 10, 3, 1, 1);
+        ArrayList<ArrayList<Integer>> x = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> y = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> ys = new ArrayList<Integer>();
+        ArrayList<Integer> xs = new ArrayList<Integer>();
+        Snake snake = new Snake(x, y);
+        snake.initializeSnake();
+
+        assertEquals(snake.getX().get(0).get(0),5);
+        assertEquals(snake.getX().get(1).get(0),5);
+        assertEquals(snake.getX().get(2).get(0),5);
+        assertEquals(snake.getY().get(0).get(0),5);
+        assertEquals(snake.getY().get(1).get(0),6);
+        assertEquals(snake.getY().get(2).get(0),7);
+
+
+        Configuration testCfg2 = new Configuration(100, 2, 1, 1, 1, 10, 3, 3, 1);
+        ArrayList<ArrayList<Integer>> x1 = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> y1 = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> ys1 = new ArrayList<Integer>();
+        ArrayList<Integer> xs1 = new ArrayList<Integer>();
+        Snake snake1 = new Snake(x1, y1);
+        snake1.initializeSnake();
+        assertEquals(snake1.getX().get(0).get(0),4);
+        assertEquals(snake1.getX().get(0).get(1),5);
+        assertEquals(snake1.getX().get(0).get(2),6);
+
+        assertEquals(snake1.getY().get(0).get(0),4);
+        assertEquals(snake1.getY().get(0).get(1),4);
+        assertEquals(snake1.getY().get(0).get(2),4);
+
+        assertEquals(snake1.getX().get(1).get(0),4);
+        assertEquals(snake1.getX().get(1).get(1),5);
+        assertEquals(snake1.getX().get(1).get(2),6);
+
+        assertEquals(snake1.getY().get(1).get(0),5);
+        assertEquals(snake1.getY().get(1).get(1),5);
+        assertEquals(snake1.getY().get(1).get(2),5);
     }
 
 }

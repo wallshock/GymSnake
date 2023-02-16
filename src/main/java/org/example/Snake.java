@@ -5,6 +5,7 @@ import org.example.interfaces.Item;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.abs;
 import static org.example.Configuration.*;
 
 public class Snake implements IMapElement {
@@ -202,6 +203,19 @@ public class Snake implements IMapElement {
         }
         return false;
     }
+    public void initializeSnake(){
+        int center =(int) roundUp(N-this.getWidth(),2);
+        for(int i=0;i<IL;i++){
+            ArrayList<Integer> xs = new ArrayList<Integer>();
+            ArrayList<Integer> ys = new ArrayList<Integer>();
+            for(int g=0;g<IW;g++){
+                xs.add(center+g);
+                ys.add((center+i)%N);
+            }
+            this.x.add(xs);
+            this.y.add(ys);
+        }
+    }
 
     public void addToBackpack(Item item){
         this.backpack.add(item);
@@ -276,6 +290,11 @@ public class Snake implements IMapElement {
             this.y.add(newy);
         }
         snakeExtendAmmount +=n;
+    }
+
+    public static long roundUp(long num, long divisor) {
+        int sign = (num > 0 ? 1 : -1) * (divisor > 0 ? 1 : -1);
+        return sign * (abs(num) + abs(divisor) - 1) / abs(divisor);
     }
 
     public ArrayList<Item> getBackpack() {
