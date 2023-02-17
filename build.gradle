@@ -1,5 +1,13 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.beryx.jlink' version '2.24.1'
+}
+
+javafx {
+    version = '18'
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.media']
 }
 
 group 'org.example'
@@ -17,3 +25,5 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+mainClassName = 'org.example.Main'

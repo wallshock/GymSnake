@@ -12,7 +12,6 @@ public class Configuration {
     public static int IW;
     public static int IS;
     public Configuration(int LethalDose, int MaximumSpeedLimit, int BonusLength, int BonusSpeed, int TailLength, int MapSize, int InitialLength, int InitialWidth, int InitialSpeed) {
-        //todo make so that when initializing with init length and width it would automatically make the snake for us
         LD = LethalDose;
         VMax = MaximumSpeedLimit;
         BD = BonusLength;

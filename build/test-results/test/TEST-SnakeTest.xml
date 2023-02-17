@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SnakeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-16T12:24:09" hostname="DESKTOP-GPM76D1" time="0.025">
+<testsuite name="SnakeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-16T19:24:50" hostname="DESKTOP-GPM76D1" time="0.021">
   <properties/>
-  <testcase name="SteroidApplicationTest()" classname="SnakeTest" time="0.025"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="InitializeSnakeTest()" classname="SnakeTest" time="0.021"/>
+  <system-out><![CDATA[[[4, 5, 6], [4, 5, 6], [4, 5, 6]]
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
