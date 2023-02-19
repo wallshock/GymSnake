@@ -83,16 +83,24 @@ public class Map {
             }
         }
     }
+    //todo add a method to update NxN map daily
+    //todo add a method to get the image file path
 
     private boolean isOccupied(int posX, int posY) {
         return !(map[posY][posX] instanceof EmptyField);
     }
 
-
+    public String getPathImageAtPosition(int x,int y){
+        return "";
+    }
     public void print(){
         for(int g=0;g<N;g++){
             System.out.println(map[g]);
         }
+    }
+
+    public int getN() {
+        return N;
     }
 }
 

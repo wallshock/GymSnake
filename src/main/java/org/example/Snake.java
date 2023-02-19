@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.interfaces.AnabolicDoseObserver;
 import org.example.interfaces.IMapElement;
 import org.example.interfaces.Item;
 
@@ -13,29 +14,14 @@ public class Snake implements IMapElement {
     ArrayList<ArrayList<Integer>> x;
     private ArrayList<Item> backpack = new ArrayList<Item>();
     ArrayList<ArrayList<Integer>> y;
-    // Coordinates of the snake's head
     int length; // Length of the snake
-
-    public int getSnakeExtendAmmount() {
-        return snakeExtendAmmount;
-    }
-
     int snakeExtendAmmount= 0;
     int width; // Width of the snake
     int speed; // Speed of the snake's movement
     int anabolicDose; // Current dose of anabolics
-
     Direction prevdirection;
-    Direction direction; // Direction of the snake's movement (up, down, left, right)
-
-//    public int getX() {
-//        return x;
-//    }
-//
-//    public int getY() {
-//        return y;
-//    }
-
+    private AnabolicDoseObserver SnakeObserver;
+    Direction direction;
     public int getWidth() {
         return width;
     }
@@ -53,6 +39,18 @@ public class Snake implements IMapElement {
     }
 
     // Constructor
+    //todo test whether it works correctly
+    public Snake(AnabolicDoseObserver observer) {
+        initializeSnake();
+        this.anabolicDose=0;
+        this.length = IL;
+        this.width = IW;
+        this.speed = IS;
+        this.prevdirection= Direction.UP;
+        this.direction = Direction.UP;
+        this.SnakeObserver = observer;
+    }
+
     public Snake(ArrayList<ArrayList<Integer>> x, ArrayList<ArrayList<Integer>> y) {
         this.x = x;
         this.y = y;
@@ -228,7 +226,7 @@ public class Snake implements IMapElement {
             this.getBackpack().get(0).applyEffect(this);
             this.getBackpack().remove(0);
             if(this.getAnabolicDose()>LD){
-                //todo end the game somehow
+                this.SnakeObserver.onSnakeOverdose();
             }
             if(this.getAnabolicDose()-before>(LD/2)){
                 applyBonus(this);
@@ -271,10 +269,6 @@ public class Snake implements IMapElement {
     public void expand() {
 
         width += 2;
-    }
-
-    public Direction getPrevdirection() {
-        return prevdirection;
     }
 
     @Override
