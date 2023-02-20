@@ -18,6 +18,7 @@ public class Game extends Thread implements AnabolicDoseObserver {
     }
 
     public Game(){
+        Configuration testCfg = new Configuration(100, 2, 1, 1, 1, 10, 3, 1, 1);
         this.snake = new Snake(this);
         this.map = new Map(N,snake);
     }
@@ -28,6 +29,9 @@ public class Game extends Thread implements AnabolicDoseObserver {
             simulate();
         }
     }
+
+    //todo make the snake move on action
+
 
     public void simulate() {
 

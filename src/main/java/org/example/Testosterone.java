@@ -18,6 +18,11 @@ public class Testosterone implements Item, IMapElement {
         return y;
     }
 
+    @Override
+    public String getPath() {
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\testosterone.png";
+    }
+
     public Testosterone(int x, int y) {
         this.x = x;
         this.y = y;

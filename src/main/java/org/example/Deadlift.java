@@ -20,6 +20,11 @@ public class Deadlift implements Item, IMapElement {
         return y;
     }
 
+    @Override
+    public String getPath() {
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\deadlift.png";
+    }
+
     public Deadlift(int x, int y) {
         this.x = x;
         this.y = y;

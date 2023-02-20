@@ -19,6 +19,11 @@ public class Bench implements Item, IMapElement {
         return y;
     }
 
+    @Override
+    public String getPath() {
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\bench.png";
+    }
+
     public Bench(int x, int y) {
         this.x = x;
         this.y = y;

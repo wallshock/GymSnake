@@ -15,21 +15,21 @@ public class Map {
 
 
     private Snake snake; // Snake object
-    private Item[][] items; // 2D array to store all the items on the map
 
     public Map(int N, Snake snake) {
         this.N = N;
         this.snake = snake;
         map = new Object[N][N];
+        generateItems(N);
     }
     // Method to add an item to the map
     public void addItem(Object item, int x, int y) {
-        map[x][y] = item;
+        map[y][x] = item;
     }
 
     // Method to remove an item from the map
     public void removeItem(int x, int y) {
-        map[x][y] = null;
+        map[y][x] = null;
     }
     
     public void generateItems(int numberofitems){
@@ -72,7 +72,6 @@ public class Map {
         ArrayList<Integer> snakeX = snake.getX().get(0);
         ArrayList<Integer> snakeY = snake.getY().get(0);
 
-        // Check if the snake intersects with any item on the map
         for (int i = 0; i < snake.width; i++) {
             Object item = map[snakeX.get(i)][snakeY.get(i)];
             if (item instanceof Item) {
@@ -84,14 +83,22 @@ public class Map {
         }
     }
     //todo add a method to update NxN map daily
-    //todo add a method to get the image file path
 
     private boolean isOccupied(int posX, int posY) {
-        return !(map[posY][posX] instanceof EmptyField);
+        return !(map[posY][posX] ==null);
     }
 
     public String getPathImageAtPosition(int x,int y){
-        return "";
+        if(map[y][x] !=null){
+            if(map[y][x] instanceof Item){
+                Item item =(Item) map[y][x];
+                return item.getPath();
+            }
+            else{
+                return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snake.png";
+            }
+        }
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\bg2.png";
     }
     public void print(){
         for(int g=0;g<N;g++){

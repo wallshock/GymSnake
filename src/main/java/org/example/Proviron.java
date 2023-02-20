@@ -18,6 +18,11 @@ public class Proviron implements Item, IMapElement {
         return y;
     }
 
+    @Override
+    public String getPath() {
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\proviron.png";
+    }
+
     public Proviron(int x, int y) {
         this.x = x;
         this.y = y;

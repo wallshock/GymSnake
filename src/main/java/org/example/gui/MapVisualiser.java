@@ -1,5 +1,8 @@
 package org.example.gui;
 
+import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
@@ -15,25 +18,25 @@ public class MapVisualiser {
     public MapVisualiser(Map map, GridPane gridPane) {
         this.map = map;
         this.gridPane = gridPane;
-        calculateColumnsAndRowsSize();
-    }
+        visualiseMap();
 
-    private void calculateColumnsAndRowsSize() {
-        int squareHeight = (int) Math.ceil(1.0 * Configuration.GRID_HEIGHT / map.getN());
-        int squareWidth  = (int) Math.ceil(1.0 * Configuration.GRID_WIDTH / map.getN());
-        this.sideLengthOfSquarePx = Math.max(40, Math.max(squareWidth, squareHeight));
-        gridPane.getColumnConstraints().add(new ColumnConstraints(sideLengthOfSquarePx));
-        gridPane.getRowConstraints().add(new RowConstraints(sideLengthOfSquarePx));
     }
 
     public void visualiseMap() {
         gridPane.getChildren().clear();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setGridLinesVisible(true);
         for (int x = 0; x < map.getN(); x++) {
             for (int y = 0; y < map.getN(); y++) {
-                GuiElementBox guiElementBox = new GuiElementBox(map, x,y, sideLengthOfSquarePx);
-                gridPane.add(guiElementBox.getVBox(), x, y);
+                String imagePath = map.getPathImageAtPosition(x,y);
+                if(imagePath!=null) {
+                    Image image = new Image(imagePath);
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitWidth(80); // adjust size as needed
+                    imageView.setFitHeight(80);
+                    gridPane.add(imageView, y, x); // add to GridPane (column, row)
+                }
             }
         }
     }
-
 }

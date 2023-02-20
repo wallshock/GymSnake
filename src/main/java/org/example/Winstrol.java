@@ -18,6 +18,11 @@ public class Winstrol implements Item, IMapElement {
         return y;
     }
 
+    @Override
+    public String getPath() {
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\winstrol.png";
+    }
+
     public Winstrol(int x, int y) {
         this.x = x;
         this.y = y;

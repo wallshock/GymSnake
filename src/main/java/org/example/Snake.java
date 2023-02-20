@@ -41,6 +41,8 @@ public class Snake implements IMapElement {
     // Constructor
     //todo test whether it works correctly
     public Snake(AnabolicDoseObserver observer) {
+        this.x = new ArrayList<ArrayList<Integer>>();
+        this.y = new ArrayList<ArrayList<Integer>>();
         initializeSnake();
         this.anabolicDose=0;
         this.length = IL;
