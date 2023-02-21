@@ -40,8 +40,8 @@ public class MapVisualiser {
             }
         }
         Snake snake = map.getSnake();
-        for (int l = 0; l < map.getSnake().getLength(); l++) {
-            for (int w = 0; w < map.getSnake().getWidth(); w++) {
+        for (int l = 0; l < snake.getLength(); l++) {
+            for (int w = 0; w < snake.getWidth(); w++) {
                 if (l == 0 & w == 0) {
                     int x = snake.getX().get(l).get(w);
                     int y = snake.getY().get(l).get(w);

@@ -71,7 +71,7 @@ public class Map {
 
     // Method to update the map in each time interval
     public void update() {
-        // Move the snake and update its position on the map
+        snake.changeDirection(snake.getQueue());
         snake.move();
         ArrayList<Integer> snakeX = snake.getX().get(0);
         ArrayList<Integer> snakeY = snake.getY().get(0);
@@ -86,7 +86,7 @@ public class Map {
             }
         }
     }
-
+//todo repair so its working with the snake
     private boolean isOccupied(int posX, int posY) {
         return !(map[posY][posX] == null);
     }

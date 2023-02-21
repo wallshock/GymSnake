@@ -49,20 +49,21 @@ public class MainSceneController implements Initializable {
         newController = fxmlLoader.getController();
         newController.init();
         Snake snake = newController.getSnake();
+        Direction queuedDirection;
 //        stage.getIcons().add(new Image(new FileInputStream("src/main/resources/com/example/evolutiongenerator/icon.png")));
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.W &&
                     (newController.getSnake().getDirection()== Direction.LEFT || snake.getDirection()==Direction.RIGHT))  {
-                snake.changeDirection(Direction.UP);
+                snake.queueDirection(Direction.UP);
             } else if (e.getCode() == KeyCode.A &&
             (snake.getDirection()==Direction.UP || snake.getDirection()==Direction.DOWN)){
-                snake.changeDirection(Direction.LEFT);
+                snake.queueDirection(Direction.LEFT);
             } else if (e.getCode() == KeyCode.S &&
             (snake.getDirection()==Direction.LEFT || snake.getDirection()==Direction.RIGHT))  {
-                snake.changeDirection(Direction.DOWN);
+                snake.queueDirection(Direction.DOWN);
             } else if (e.getCode() == KeyCode.D &&
             (snake.getDirection()==Direction.UP || snake.getDirection()==Direction.DOWN)){
-                snake.changeDirection(Direction.RIGHT);
+                snake.queueDirection(Direction.RIGHT);
             }
         });
         stage.setScene(scene);
