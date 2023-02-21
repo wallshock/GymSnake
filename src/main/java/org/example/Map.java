@@ -16,11 +16,15 @@ public class Map {
 
     private Snake snake; // Snake object
 
+    public Snake getSnake() {
+        return snake;
+    }
+
     public Map(int N, Snake snake) {
         this.N = N;
         this.snake = snake;
         map = new Object[N][N];
-        generateItems(N);
+        generateItems(N/2);
     }
     // Method to add an item to the map
     public void addItem(Object item, int x, int y) {
@@ -73,7 +77,7 @@ public class Map {
         ArrayList<Integer> snakeY = snake.getY().get(0);
 
         for (int i = 0; i < snake.width; i++) {
-            Object item = map[snakeX.get(i)][snakeY.get(i)];
+            Object item = map[snakeY.get(i)][snakeX.get(i)];
             if (item instanceof Item) {
                 Item item1 = (Item) item;
                 snake.addToBackpack(item1);
@@ -82,10 +86,9 @@ public class Map {
             }
         }
     }
-    //todo add a method to update NxN map daily
 
     private boolean isOccupied(int posX, int posY) {
-        return !(map[posY][posX] ==null);
+        return !(map[posY][posX] == null);
     }
 
     public String getPathImageAtPosition(int x,int y){

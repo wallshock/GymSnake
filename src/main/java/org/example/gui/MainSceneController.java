@@ -6,12 +6,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import org.example.Direction;
 import org.example.Game;
 import org.example.Main;
+import org.example.Snake;
 
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -44,9 +48,26 @@ public class MainSceneController implements Initializable {
         stage = (Stage) ap.getScene().getWindow();
         newController = fxmlLoader.getController();
         newController.init();
+        Snake snake = newController.getSnake();
 //        stage.getIcons().add(new Image(new FileInputStream("src/main/resources/com/example/evolutiongenerator/icon.png")));
+        scene.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.W &&
+                    (newController.getSnake().getDirection()== Direction.LEFT || snake.getDirection()==Direction.RIGHT))  {
+                snake.changeDirection(Direction.UP);
+            } else if (e.getCode() == KeyCode.A &&
+            (snake.getDirection()==Direction.UP || snake.getDirection()==Direction.DOWN)){
+                snake.changeDirection(Direction.LEFT);
+            } else if (e.getCode() == KeyCode.S &&
+            (snake.getDirection()==Direction.LEFT || snake.getDirection()==Direction.RIGHT))  {
+                snake.changeDirection(Direction.DOWN);
+            } else if (e.getCode() == KeyCode.D &&
+            (snake.getDirection()==Direction.UP || snake.getDirection()==Direction.DOWN)){
+                snake.changeDirection(Direction.RIGHT);
+            }
+        });
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        newController.start();
     }
 }

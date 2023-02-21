@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import org.example.Configuration;
 import org.example.Map;
+import org.example.Snake;
 
 public class MapVisualiser {
 
@@ -28,15 +29,38 @@ public class MapVisualiser {
         gridPane.setGridLinesVisible(true);
         for (int x = 0; x < map.getN(); x++) {
             for (int y = 0; y < map.getN(); y++) {
-                String imagePath = map.getPathImageAtPosition(x,y);
-                if(imagePath!=null) {
+                String imagePath = map.getPathImageAtPosition(x, y);
+                if (imagePath != null) {
                     Image image = new Image(imagePath);
                     ImageView imageView = new ImageView(image);
                     imageView.setFitWidth(80); // adjust size as needed
                     imageView.setFitHeight(80);
-                    gridPane.add(imageView, y, x); // add to GridPane (column, row)
+                    gridPane.add(imageView, x, y); // add to GridPane (column, row)
+                }
+            }
+        }
+        Snake snake = map.getSnake();
+        for (int l = 0; l < map.getSnake().getLength(); l++) {
+            for (int w = 0; w < map.getSnake().getWidth(); w++) {
+                if (l == 0 & w == 0) {
+                    int x = snake.getX().get(l).get(w);
+                    int y = snake.getY().get(l).get(w);
+                    Image image = new Image(Snake.getHeadImagePath());
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitWidth(80); // adjust size as needed
+                    imageView.setFitHeight(80);
+                    gridPane.add(imageView, x, y);
+                } else {
+                    int x = snake.getX().get(l).get(w);
+                    int y = snake.getY().get(l).get(w);
+                    Image image = new Image(Snake.getImagePath());
+                    ImageView imageView = new ImageView(image);
+                    imageView.setFitWidth(80); // adjust size as needed
+                    imageView.setFitHeight(80);
+                    gridPane.add(imageView, x, y); // add to GridPane (column, row)
                 }
             }
         }
     }
+
 }

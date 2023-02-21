@@ -1,11 +1,18 @@
 package org.example;
 
 import org.example.interfaces.AnabolicDoseObserver;
+import org.example.interfaces.IGuiObserver;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Scanner;
 
 import static org.example.Configuration.N;
 
 public class Game extends Thread implements AnabolicDoseObserver {
     private Snake snake;
+
+    private IGuiObserver observer;
     private int dead = 0;
     private Map map;
 
@@ -18,29 +25,24 @@ public class Game extends Thread implements AnabolicDoseObserver {
     }
 
     public Game(){
-        Configuration testCfg = new Configuration(100, 2, 1, 1, 1, 10, 3, 1, 1);
+        Configuration testCfg = new Configuration(100, 2, 1, 0.5, 1, 10, 5, 1, 1.1);
         this.snake = new Snake(this);
         this.map = new Map(N,snake);
     }
 
-    @Override
     public void run() {
         while (dead==0) {
-            simulate();
+            map.update();
+            observer.updateGuiViews();
         }
     }
-
-    //todo make the snake move on action
-
-
-    public void simulate() {
-
-    }
-
-
 
     @Override
     public void onSnakeOverdose() {
         dead = 1;
+    }
+
+    public void setObserver(IGuiObserver o){
+        this.observer = o;
     }
 }

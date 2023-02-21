@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static java.lang.Math.abs;
 import static org.example.Configuration.*;
 
-public class Snake implements IMapElement {
+public class Snake {
     // Fields
     ArrayList<ArrayList<Integer>> x;
     private ArrayList<Item> backpack = new ArrayList<Item>();
@@ -17,7 +17,7 @@ public class Snake implements IMapElement {
     int length; // Length of the snake
     int snakeExtendAmmount= 0;
     int width; // Width of the snake
-    int speed; // Speed of the snake's movement
+    double speed; // Speed of the snake's movement
     int anabolicDose; // Current dose of anabolics
     Direction prevdirection;
     private AnabolicDoseObserver SnakeObserver;
@@ -39,7 +39,6 @@ public class Snake implements IMapElement {
     }
 
     // Constructor
-    //todo test whether it works correctly
     public Snake(AnabolicDoseObserver observer) {
         this.x = new ArrayList<ArrayList<Integer>>();
         this.y = new ArrayList<ArrayList<Integer>>();
@@ -78,23 +77,25 @@ public class Snake implements IMapElement {
             case UP:
                 if(prevdirection == Direction.RIGHT) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)- ((this.width-1)-j))) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) - 1-j)) % N);
+                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)- (this.width-1)-j), N));
+                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) - 1-j), N));
+                        System.out.println(x);
+                        System.out.println(y);
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
                     }
                 }else if(prevdirection == Direction.LEFT){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)+j)) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) - (this.width)+j)) % N);
+                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)+j), N));
+                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) - (this.width)+j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
                     }
                 }else{
                     for (int j = 0; j < this.width; j++){
-                        this.y.get(0).set(j,(this.y.get(0).get(j)-1)%N);
+                        this.y.get(0).set(j,modulo((this.y.get(0).get(j)-1),N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
@@ -105,23 +106,23 @@ public class Snake implements IMapElement {
             case DOWN:
                 if(prevdirection == Direction.RIGHT) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)-j)) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) + ((this.width)-j))) % N);
+                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)-j), N));
+                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) + ((this.width)-j)), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
                     }
                 }else if(prevdirection == Direction.LEFT){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j) +(this.width-1-j))) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) +1+j) % N));
+                        this.x.get(0).set(j, modulo((this.x.get(0).get(j) +(this.width-1-j)), N));
+                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) +1+j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
                     }
                 }else{
                     for (int j = 0; j < this.width; j++){
-                        this.y.get(0).set(j,(this.y.get(0).get(j)+1)%N);
+                        this.y.get(0).set(j,modulo((this.y.get(0).get(j)+1),N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
@@ -132,16 +133,16 @@ public class Snake implements IMapElement {
             case LEFT:
                 if(prevdirection == Direction.UP) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)-1-j)) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) +(this.width-1-j))) % N);
+                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)-1-j), N));
+                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) +(this.width-1-j)), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
                     }
                 }else if(prevdirection == Direction.DOWN){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)-(this.width-j))) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) - j) % N));
+                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)-(this.width-j)), N));
+                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) - j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
@@ -149,7 +150,7 @@ public class Snake implements IMapElement {
                 }
                 else{
                     for (int j = 0; j < this.width; j++){
-                        this.x.get(0).set(j,(this.x.get(0).get(j)-1)%N);
+                        this.x.get(0).set(j,modulo(this.x.get(0).get(j)-1,N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
@@ -160,16 +161,16 @@ public class Snake implements IMapElement {
             case RIGHT:
                 if(prevdirection == Direction.UP) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)+(this.width-j))) % N);
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) + j)) % N);
+                        this.x.get(0).set(j, modulo(this.x.get(0).get(j)+(this.width-j), N));
+                        this.y.get(0).set(j, modulo(this.y.get(0).get(j) + j, N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
                     }
                 }else if(prevdirection == Direction.DOWN){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, ((this.x.get(0).get(j)+1+j) % N));
-                        this.y.get(0).set(j, ((this.y.get(0).get(j) - (this.width-1-j)) % N));
+                        this.x.get(0).set(j, modulo(this.x.get(0).get(j)+1+j, N));
+                        this.y.get(0).set(j, modulo(this.y.get(0).get(j) - (this.width-1-j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
@@ -177,7 +178,7 @@ public class Snake implements IMapElement {
                 }
                 else{
                     for (int j = 0; j < this.width; j++){
-                        this.x.get(0).set(j,(this.x.get(0).get(j)+1)%N);
+                        this.x.get(0).set(j,modulo(this.x.get(0).get(j)+1,N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectSteroids();
                         }
@@ -237,18 +238,18 @@ public class Snake implements IMapElement {
     }
     private void applyBonus(Snake snake) {
         snake.extend(BD);
-        snake.setSpeed(snake.getSpeed()+1);
+        snake.setSpeed(snake.getSpeed()+BP);
     }
     public void changeDirection(Direction newDirection) {
         prevdirection = direction;
         direction = newDirection;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(double speed) {
         this.speed = speed;
     }
 
@@ -267,16 +268,15 @@ public class Snake implements IMapElement {
     public void setAnabolicDose(int dose) {
         this.anabolicDose = dose;
     }
-//todo figure out how to expand the snake correctly
-    public void expand() {
 
-        width += 2;
+    public static String getImagePath() {
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snek.png";
     }
 
-    @Override
-    public String getImagePath() {
-        return null;
+    public static String getHeadImagePath() {
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snekhead.png";
     }
+
 
     public void extend(int n) {
         for(int i=0;i<n;i++) {
@@ -286,11 +286,20 @@ public class Snake implements IMapElement {
             this.y.add(newy);
         }
         snakeExtendAmmount +=n;
+        System.out.println("extend successfull");
     }
 
     public static long roundUp(long num, long divisor) {
         int sign = (num > 0 ? 1 : -1) * (divisor > 0 ? 1 : -1);
         return sign * (abs(num) + abs(divisor) - 1) / abs(divisor);
+    }
+
+    public int modulo(int dividend, int divisor) {
+        int result = dividend % divisor;
+        if (result < 0) {
+            result += divisor;
+        }
+        return result;
     }
 
     public ArrayList<Item> getBackpack() {

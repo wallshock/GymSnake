@@ -39,7 +39,7 @@
    </Button>
    <ImageView fitHeight="273.0" fitWidth="342.0" layoutX="473.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@snek.png" />
+         <Image url="@snek2.png" />
       </image>
       <effect>
          <DropShadow height="41.52" radius="22.457500000000003" spread="0.32" width="50.31">
