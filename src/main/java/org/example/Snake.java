@@ -204,16 +204,9 @@ public class Snake {
             for(int j=0;j<this.width;j++){
                 if(this.getX().get(this.length-1-i).get(j)==x){
                     if(this.getY().get(this.length-1-i).get(j)==y){
-                        System.out.println("SIEMA");
                         return true;
                     }
                 }
-                System.out.println(this.x);
-                System.out.println(this.y);
-                System.out.println(this.getX().get(this.length-1-i).get(j));
-                System.out.println(this.getY().get(this.length-1-i).get(j));
-                System.out.println(x);
-                System.out.println(y);
             }
         }
         return false;
@@ -233,7 +226,9 @@ public class Snake {
     }
 
     public void addToBackpack(Item item){
-        this.backpack.add(item);
+        if(this.backpack.size()<4) {
+            this.backpack.add(item);
+        }
     }
 
     public void injectSteroids() {
@@ -284,7 +279,7 @@ public class Snake {
     }
 
     public static String getImagePath() {
-        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snek.png";
+        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snek.jpg";
     }
 
     public static String getHeadImagePath() {
@@ -299,8 +294,8 @@ public class Snake {
             ArrayList<Integer> newx = new ArrayList<Integer>();
             ArrayList<Integer> newy = new ArrayList<Integer>();
             for(int g=0;g<this.width;g++){
-                newx.add(new Integer(originalX.get(g)));
-                newy.add(new Integer(originalY.get(g)));
+                newx.add(originalX.get(g));
+                newy.add(originalY.get(g));
             }
             this.x.add(newx);
             this.y.add(newy);
@@ -325,11 +320,20 @@ public class Snake {
         return backpack;
     }
 
+    public void reduceToxicity(){
+        if(this.anabolicDose>0){
+            anabolicDose -=1;
+        }
+    }
     public void queueDirection(Direction direction){
         this.queue = direction;
     }
 
     public Direction getQueue() {
         return queue;
+    }
+
+    public double getScore(){
+        return this.speed*this.length*this.length;
     }
 }

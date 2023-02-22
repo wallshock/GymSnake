@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="ap" prefHeight="726.0" prefWidth="1085.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.MainSceneController">
-   <ImageView fitHeight="832.0" fitWidth="1345.0" layoutX="-126.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="832.0" fitWidth="1345.0" layoutX="-147.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@bg.png" />
       </image>
@@ -21,22 +21,27 @@
       </effect>
    </ImageView>
    <ButtonBar layoutX="61.0" layoutY="71.0" prefHeight="40.0" prefWidth="200.0" />
-   <Button layoutX="503.0" layoutY="472.0" mnemonicParsing="false" onAction="#onNewSimulationButtonClicked" prefHeight="98.0" prefWidth="213.0" text="Start">
+   <Button id="button1" layoutX="503.0" layoutY="474.0" mnemonicParsing="false" onAction="#onNewSimulationButtonClicked" prefHeight="74.0" prefWidth="213.0" style="-fx-background-radius: 100;" text="START">
       <effect>
          <DropShadow radius="18.060000000000002" spread="0.3" width="53.24" />
       </effect>
       <font>
-         <Font size="46.0" />
+         <Font name="BigNoodleTitling" size="46.0" />
       </font>
    </Button>
-   <Button layoutX="543.0" layoutY="622.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="133.0" text="Configure">
+   <Button layoutX="514.0" layoutY="594.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="192.0" style="-fx-background-radius: 50;" text="Configure">
       <effect>
          <DropShadow height="38.59" radius="18.795" spread="0.32" width="38.59" />
       </effect>
       <font>
-         <Font size="23.0" />
+         <Font name="BigNoodleTitling" size="36.0" />
       </font>
    </Button>
+   <TextField alignment="CENTER" layoutX="268.0" layoutY="7.0" prefHeight="105.0" prefWidth="683.0" style="-fx-background-color: none;" text="Gym Snake">
+      <font>
+         <Font name="BigNoodleTitling" size="96.0" />
+      </font>
+   </TextField>
    <ImageView fitHeight="273.0" fitWidth="342.0" layoutX="473.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@snek2.png" />
@@ -49,9 +54,4 @@
          </DropShadow>
       </effect>
    </ImageView>
-   <TextField alignment="CENTER" layoutX="277.0" layoutY="39.0" prefHeight="105.0" prefWidth="683.0" style="-fx-background-color: none;" text="Gym Snake">
-      <font>
-         <Font name="Nougat ExtraBlack" size="52.0" />
-      </font>
-   </TextField>
 </AnchorPane>

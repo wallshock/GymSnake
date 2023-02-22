@@ -86,7 +86,6 @@ public class Map {
             }
         }
     }
-//todo repair so its working with the snake
     private boolean isOccupied(int posX, int posY) {
         return !(map[posY][posX] == null);
     }

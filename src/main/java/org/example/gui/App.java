@@ -1,10 +1,13 @@
 package org.example.gui;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.example.Game;
 import org.example.Main;
 import java.io.IOException;
@@ -17,6 +20,13 @@ public class App extends Application {
         stage.setResizable(true);
         stage.setTitle("GymSnake");
         stage.setScene(scene);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
         stage.show();
     }
 }

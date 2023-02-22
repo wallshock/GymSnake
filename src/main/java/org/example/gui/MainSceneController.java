@@ -1,5 +1,7 @@
 package org.example.gui;
 
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.example.Direction;
 import org.example.Game;
 import org.example.Main;
@@ -44,7 +47,7 @@ public class MainSceneController implements Initializable {
     public void onNewSimulationButtonClicked() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/game-scene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1050, 860);
+        Scene scene = new Scene(fxmlLoader.load(), 1350, 860);
         stage = (Stage) ap.getScene().getWindow();
         newController = fxmlLoader.getController();
         newController.init();
@@ -68,6 +71,13 @@ public class MainSceneController implements Initializable {
         });
         stage.setScene(scene);
         stage.setResizable(false);
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
         stage.show();
         newController.start();
     }

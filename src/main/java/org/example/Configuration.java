@@ -13,6 +13,8 @@ public class Configuration {
     public final static int GRID_HEIGHT = 1200;
     public static int IW;
     public static double IS;
+    //todo make the game fit no matter map size
+    //todo make presets
     public Configuration(int LethalDose, int MaximumSpeedLimit, int BonusLength, double BonusSpeed, int TailLength, int MapSize, int InitialLength, int InitialWidth, double InitialSpeed) {
         LD = LethalDose;
         VMax = MaximumSpeedLimit;
