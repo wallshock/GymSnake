@@ -18,7 +18,7 @@ public class MapTest {
         y.add(row1);
         x.add(col1);
         Snake snake = new Snake(x, y);
-        Map map = new Map(Configuration.N,snake);
+        GridMap map = new GridMap(Configuration.N,snake);
         map.print();
     }
 }

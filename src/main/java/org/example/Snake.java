@@ -80,25 +80,27 @@ public class Snake {
 
         switch (this.direction) {
             case UP:
+                //todo
+                //do roboty tu syf jakis
                 if(prevdirection == Direction.RIGHT) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)- (this.width-1)-j), N));
-                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) - 1-j), N));
+                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j)- (this.width-1)-j), N));
+                        this.y.get(0).set(j, Static.modulo((this.y.get(0).get(j) - 1-j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
                     }
                 }else if(prevdirection == Direction.LEFT){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)+j), N));
-                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) - (this.width)+j), N));
+                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j)+j), N));
+                        this.y.get(0).set(j, Static.modulo((this.y.get(0).get(j) - (this.width)+j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
                     }
                 }else{
                     for (int j = 0; j < this.width; j++){
-                        this.y.get(0).set(j,modulo((this.y.get(0).get(j)-1),N));
+                        this.y.get(0).set(j,Static.modulo((this.y.get(0).get(j)-1),N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
@@ -109,23 +111,23 @@ public class Snake {
             case DOWN:
                 if(prevdirection == Direction.RIGHT) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)-j), N));
-                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) + ((this.width)-j)), N));
+                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j)-j), N));
+                        this.y.get(0).set(j, Static.modulo((this.y.get(0).get(j) + ((this.width)-j)), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
                     }
                 }else if(prevdirection == Direction.LEFT){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo((this.x.get(0).get(j) +(this.width-1-j)), N));
-                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) +1+j), N));
+                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j) +(this.width-1-j)), N));
+                        this.y.get(0).set(j, Static.modulo((this.y.get(0).get(j) +1+j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
                     }
                 }else{
                     for (int j = 0; j < this.width; j++){
-                        this.y.get(0).set(j,modulo((this.y.get(0).get(j)+1),N));
+                        this.y.get(0).set(j,Static.modulo((this.y.get(0).get(j)+1),N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
@@ -136,16 +138,16 @@ public class Snake {
             case LEFT:
                 if(prevdirection == Direction.UP) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)-1-j), N));
-                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) +(this.width-1-j)), N));
+                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j)-1-j), N));
+                        this.y.get(0).set(j, Static.modulo((this.y.get(0).get(j) +(this.width-1-j)), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
                     }
                 }else if(prevdirection == Direction.DOWN){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo((this.x.get(0).get(j)-(this.width-j)), N));
-                        this.y.get(0).set(j, modulo((this.y.get(0).get(j) - j), N));
+                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j)-(this.width-j)), N));
+                        this.y.get(0).set(j, Static.modulo((this.y.get(0).get(j) - j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
@@ -153,7 +155,7 @@ public class Snake {
                 }
                 else{
                     for (int j = 0; j < this.width; j++){
-                        this.x.get(0).set(j,modulo(this.x.get(0).get(j)-1,N));
+                        this.x.get(0).set(j,Static.modulo(this.x.get(0).get(j)-1,N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
@@ -164,16 +166,16 @@ public class Snake {
             case RIGHT:
                 if(prevdirection == Direction.UP) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo(this.x.get(0).get(j)+(this.width-j), N));
-                        this.y.get(0).set(j, modulo(this.y.get(0).get(j) + j, N));
+                        this.x.get(0).set(j, Static.modulo(this.x.get(0).get(j)+(this.width-j), N));
+                        this.y.get(0).set(j, Static.modulo(this.y.get(0).get(j) + j, N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
                     }
                 }else if(prevdirection == Direction.DOWN){
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, modulo(this.x.get(0).get(j)+1+j, N));
-                        this.y.get(0).set(j, modulo(this.y.get(0).get(j) - (this.width-1-j), N));
+                        this.x.get(0).set(j, Static.modulo(this.x.get(0).get(j)+1+j, N));
+                        this.y.get(0).set(j, Static.modulo(this.y.get(0).get(j) - (this.width-1-j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
@@ -181,7 +183,7 @@ public class Snake {
                 }
                 else{
                     for (int j = 0; j < this.width; j++){
-                        this.x.get(0).set(j,modulo(this.x.get(0).get(j)+1,N));
+                        this.x.get(0).set(j,Static.modulo(this.x.get(0).get(j)+1,N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
                         }
@@ -212,7 +214,7 @@ public class Snake {
         return false;
     }
     public void initializeSnake(){
-        int center =(int) roundUp(N-this.getWidth(),2);
+        int center =(int) Static.roundUp(N-this.getWidth(),2);
         for(int i=0;i<IL;i++){
             ArrayList<Integer> xs = new ArrayList<Integer>();
             ArrayList<Integer> ys = new ArrayList<Integer>();
@@ -303,18 +305,7 @@ public class Snake {
         snakeExtendAmmount +=n;
     }
 
-    public static long roundUp(long num, long divisor) {
-        int sign = (num > 0 ? 1 : -1) * (divisor > 0 ? 1 : -1);
-        return sign * (abs(num) + abs(divisor) - 1) / abs(divisor);
-    }
 
-    public int modulo(int dividend, int divisor) {
-        int result = dividend % divisor;
-        if (result < 0) {
-            result += divisor;
-        }
-        return result;
-    }
 
     public ArrayList<Item> getBackpack() {
         return backpack;

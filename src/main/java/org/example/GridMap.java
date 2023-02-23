@@ -1,13 +1,10 @@
 package org.example;
 
-import org.example.interfaces.IMapElement;
 import org.example.interfaces.Item;
 
 import java.util.ArrayList;
 
-import static org.example.Configuration.*;
-
-public class Map {
+public class GridMap {
     private static final double NUM_ITEM_TYPES = 6;
     private int N; // Size of the map
     Object[][] map;
@@ -20,7 +17,7 @@ public class Map {
         return snake;
     }
 
-    public Map(int N, Snake snake) {
+    public GridMap(int N, Snake snake) {
         this.N = N;
         this.snake = snake;
         map = new Object[N][N];
@@ -41,7 +38,7 @@ public class Map {
             int posX = (int) (Math.random() * N);
             int posY = (int) (Math.random() * N);
             if (!this.isOccupied(posX, posY)) {
-                addItem(Map.randomItem(posX, posY), posX, posY);
+                addItem(GridMap.randomItem(posX, posY), posX, posY);
             }
         }
         
@@ -85,6 +82,9 @@ public class Map {
                 generateItems(1);
             }
         }
+        if(Static.callFunction()){
+            generateItems(1);
+        }
     }
     private boolean isOccupied(int posX, int posY) {
         return !(map[posY][posX] == null);
@@ -107,6 +107,8 @@ public class Map {
             System.out.println(map[g]);
         }
     }
+
+
 
     public int getN() {
         return N;
