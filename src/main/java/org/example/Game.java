@@ -14,20 +14,20 @@ public class Game extends Thread implements AnabolicDoseObserver {
 
     private IGuiObserver observer;
     private boolean dead = false;
-    private Map map;
+    private GridMap map;
 
     public Snake getSnake() {
         return snake;
     }
 
-    public Map getMap() {
+    public GridMap getMap() {
         return map;
     }
 
     public Game(){
-        Configuration testCfg = new Configuration(100, 2, 1, 0.5, 2, 10, 5, 1, 1.5);
+        Configuration testCfg = new Configuration(100, 8, 1, 0.5, 2, 15, 5, 1, 4);
         this.snake = new Snake(this);
-        this.map = new Map(N,snake);
+        this.map = new GridMap(N,snake);
     }
 
     public void run() {

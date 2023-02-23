@@ -16,8 +16,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/main-scene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1210, 720);
-        stage.setResizable(true);
+        Scene scene = new Scene(fxmlLoader.load(), 1200, 720);
+        stage.setResizable(false);
         stage.setTitle("GymSnake");
         stage.setScene(scene);
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

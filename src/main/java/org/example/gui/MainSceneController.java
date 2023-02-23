@@ -52,7 +52,6 @@ public class MainSceneController implements Initializable {
         newController = fxmlLoader.getController();
         newController.init();
         Snake snake = newController.getSnake();
-        Direction queuedDirection;
 //        stage.getIcons().add(new Image(new FileInputStream("src/main/resources/com/example/evolutiongenerator/icon.png")));
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.W &&
