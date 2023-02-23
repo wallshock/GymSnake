@@ -80,11 +80,9 @@ public class Snake {
 
         switch (this.direction) {
             case UP:
-                //todo
-                //do roboty tu syf jakis
                 if(prevdirection == Direction.RIGHT) {
                     for (int j = 0; j < this.width; j++) {
-                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j)- (this.width-1)-j), N));
+                        this.x.get(0).set(j, Static.modulo((this.x.get(0).get(j)- (this.width-1)+j), N));
                         this.y.get(0).set(j, Static.modulo((this.y.get(0).get(j) - 1-j), N));
                         if(CheckForSteroidApplication(this.x.get(0).get(j),this.y.get(0).get(j))){
                             injectionflag = true;
