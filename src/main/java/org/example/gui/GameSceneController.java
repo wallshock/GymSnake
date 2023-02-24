@@ -216,22 +216,22 @@ public class GameSceneController implements IGuiObserver {
     public void updateToxicBar(){
         Snake snake = game.getSnake();
         if(snake.getAnabolicDose()>99){
-            Image newImage = new Image("C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\barfive.png");
+            Image newImage = new Image("barfive.png");
             toxicbar.setImage(newImage);
         } else if (snake.getAnabolicDose()>98) {
-            Image newImage = new Image("C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\barfour.png");
+            Image newImage = new Image("barfour.png");
             toxicbar.setImage(newImage);
         } else if (snake.getAnabolicDose()>51) {
-            Image newImage = new Image("C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\barthree.png");
+            Image newImage = new Image("barthree.png");
             toxicbar.setImage(newImage);
         } else if (snake.getAnabolicDose()>26) {
-            Image newImage = new Image("C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\bar.png");
+            Image newImage = new Image("bar.png");
             toxicbar.setImage(newImage);
         } else if (snake.getAnabolicDose()>0) {
-            Image newImage = new Image("C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\barone.png");
+            Image newImage = new Image("barone.png");
             toxicbar.setImage(newImage);
         }else{
-            Image newImage = new Image("C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\barzero.png");
+            Image newImage = new Image("barzero.png");
             toxicbar.setImage(newImage);
         }
     }

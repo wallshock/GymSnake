@@ -116,10 +116,10 @@ public class GridMap {
                 return item.getPath();
             }
             else{
-                return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\snake.png";
+                return "snake.png";
             }
         }
-        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\bg2.png";
+        return "bg2.png";
     }
     public void print(){
         for(int g=0;g<N;g++){

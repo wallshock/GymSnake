@@ -22,7 +22,7 @@ public class Deadlift implements Item, IMapElement {
 
     @Override
     public String getPath() {
-        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\deadlift.png";
+        return "deadlift.png";
     }
 
     public Deadlift(int x, int y) {

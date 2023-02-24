@@ -21,7 +21,7 @@ public class Bench implements Item, IMapElement {
 
     @Override
     public String getPath() {
-        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\bench.png";
+        return "bench.png";
     }
 
     public Bench(int x, int y) {

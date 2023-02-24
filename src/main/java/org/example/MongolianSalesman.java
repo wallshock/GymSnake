@@ -21,7 +21,7 @@ public class MongolianSalesman implements Item, IMapElement {
 
     @Override
     public String getPath() {
-        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\mgsales.png";
+        return "mgsales.png";
     }
     public MongolianSalesman(int x, int y) {
         this.x = x;

@@ -279,11 +279,11 @@ public class Snake {
     }
 
     public static String getImagePath() {
-        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\snek.jpg";
+        return "snek.jpg";
     }
 
     public static String getHeadImagePath() {
-        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\snekhead.png";
+        return "snekhead.png";
     }
 
 
