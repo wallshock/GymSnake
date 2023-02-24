@@ -45,24 +45,38 @@ public class GridMap {
     }
     public static Item randomItem(int x, int y) {
         // Generate a random number between 0 and the number of item types
-        int itemType = (int) (Math.random() * NUM_ITEM_TYPES);
+        int probability =(int) (Math.random()*37);
 
         // Create and return the item based on the random number
-        switch (itemType) {
-            case 0:
-                return new Bench(x, y);
-            case 1:
-                return new Deadlift(x, y);
-            case 2:
-                return new Testosterone(x, y);
-            case 3:
-                return new Proviron(x, y);
-            case 4:
-                return new Winstrol(x, y);
-            case 5:
-                return new MongolianSalesman(x, y);
-            default:
-                throw new IllegalArgumentException("Invalid item type: " + itemType);
+        // Create and return the item based on the random number
+        if (probability < 20) {
+            int itemType = (int) (Math.random() * 3);
+            switch (itemType) {
+                case 0:
+                    return new Bench(x, y);
+                case 1:
+                    return new Deadlift(x, y);
+                case 2:
+                    return new Testosterone(x, y);
+                default:
+                    throw new IllegalArgumentException("Invalid item type: " + itemType);
+            }
+        } else if (probability < 35) {
+            int itemType = (int) (Math.random() * 2) + 4;
+            switch (itemType) {
+                case 3:
+                    return new Proviron(x, y);
+                case 4:
+                    return new Winstrol(x, y);
+                case 5:
+                    return new MongolianSalesman(x, y);
+                default:
+                    throw new IllegalArgumentException("Invalid item type: " + itemType);
+            }
+        } else if (probability < 37) {
+            return new HolyCleanse(x, y);
+        } else {
+            throw new IllegalArgumentException("Invalid probability: " + probability);
         }
     }
 
@@ -77,8 +91,13 @@ public class GridMap {
             Object item = map[snakeY.get(i)][snakeX.get(i)];
             if (item instanceof Item) {
                 Item item1 = (Item) item;
-                snake.addToBackpack(item1);
-                removeItem(snakeX.get(i), snakeY.get(i));
+                if(item1 instanceof HolyCleanse){
+                    item1.applyEffect(snake);
+                    removeItem(snakeX.get(i), snakeY.get(i));
+                }else {
+                    snake.addToBackpack(item1);
+                    removeItem(snakeX.get(i), snakeY.get(i));
+                }
                 generateItems(1);
             }
         }
@@ -97,10 +116,10 @@ public class GridMap {
                 return item.getPath();
             }
             else{
-                return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snake.png";
+                return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\snake.png";
             }
         }
-        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\bg2.png";
+        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\bg2.png";
     }
     public void print(){
         for(int g=0;g<N;g++){

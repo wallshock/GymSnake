@@ -25,17 +25,19 @@ public class Game extends Thread implements AnabolicDoseObserver {
     }
 
     public Game(){
-        Configuration testCfg = new Configuration(100, 8, 1, 0.5, 2, 10, 5, 1, 4);
+        Configuration testCfg = new Configuration(100, 4, 1, 0.25, 2, 10, 6, 1, 1.25);
         this.snake = new Snake(this);
         this.map = new GridMap(N,snake);
     }
 
     public void run() {
+        observer.endingScreenHide();
         while (!dead) {
             map.update();
             snake.reduceToxicity();
             observer.updateGuiViews();
         }
+        observer.endingScreenShow();
     }
 
     @Override

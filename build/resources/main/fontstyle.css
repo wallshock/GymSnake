@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Pixelfont';
+    src: url('fonts/pixelfont.ttf');
+}
+
+.text {
+    -fx-font-family: "Pixelfont";
+}

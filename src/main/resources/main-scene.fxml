@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -26,22 +26,17 @@
          <DropShadow radius="18.060000000000002" spread="0.3" width="53.24" />
       </effect>
       <font>
-         <Font name="BigNoodleTitling" size="46.0" />
+         <Font name="8-bit Arcade Out" size="46.0" />
       </font>
    </Button>
-   <Button layoutX="514.0" layoutY="594.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="192.0" style="-fx-background-radius: 50;" text="Configure">
+   <Button layoutX="503.0" layoutY="582.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="212.0" style="-fx-background-radius: 50;" text="Configure">
       <effect>
          <DropShadow height="38.59" radius="18.795" spread="0.32" width="38.59" />
       </effect>
       <font>
-         <Font name="BigNoodleTitling" size="36.0" />
+         <Font name="8-bit Arcade Out" size="36.0" />
       </font>
    </Button>
-   <TextField alignment="CENTER" layoutX="268.0" layoutY="7.0" prefHeight="105.0" prefWidth="683.0" style="-fx-background-color: none;" text="Gym Snake">
-      <font>
-         <Font name="BigNoodleTitling" size="96.0" />
-      </font>
-   </TextField>
    <ImageView fitHeight="273.0" fitWidth="342.0" layoutX="473.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@snek2.png" />
@@ -54,4 +49,24 @@
          </DropShadow>
       </effect>
    </ImageView>
+   <Label layoutX="364.0" layoutY="15.0" prefHeight="171.0" prefWidth="570.0" text="GYM SNAKE" textFill="#5e8658">
+      <font>
+         <Font name="8-bit Arcade In" size="128.0" />
+      </font>
+   </Label>
+   <Label layoutX="364.0" layoutY="11.0" prefHeight="171.0" prefWidth="570.0" text="GYM SNAKE">
+      <font>
+         <Font name="8-bit Arcade Out" size="128.0" />
+      </font>
+   </Label>
+   <Label layoutX="552.0" layoutY="427.0" prefHeight="171.0" prefWidth="570.0" text="start" textFill="#588285">
+      <font>
+         <Font name="8-bit Arcade In" size="46.0" />
+      </font>
+   </Label>
+   <Label layoutX="533.0" layoutY="526.0" prefHeight="171.0" prefWidth="570.0" text="configure" textFill="#588285">
+      <font>
+         <Font name="8-bit Arcade In" size="36.0" />
+      </font>
+   </Label>
 </AnchorPane>

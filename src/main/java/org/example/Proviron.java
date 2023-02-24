@@ -20,7 +20,7 @@ public class Proviron implements Item, IMapElement {
 
     @Override
     public String getPath() {
-        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\proviron.png";
+        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\proviron.png";
     }
 
     public Proviron(int x, int y) {

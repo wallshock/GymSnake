@@ -20,7 +20,7 @@ public class Testosterone implements Item, IMapElement {
 
     @Override
     public String getPath() {
-        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\testosterone.png";
+        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\testosterone.png";
     }
 
     public Testosterone(int x, int y) {

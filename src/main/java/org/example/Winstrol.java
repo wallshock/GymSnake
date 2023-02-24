@@ -20,7 +20,7 @@ public class Winstrol implements Item, IMapElement {
 
     @Override
     public String getPath() {
-        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\winstrol.png";
+        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\winstrol.png";
     }
 
     public Winstrol(int x, int y) {

@@ -279,11 +279,11 @@ public class Snake {
     }
 
     public static String getImagePath() {
-        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snek.jpg";
+        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\snek.jpg";
     }
 
     public static String getHeadImagePath() {
-        return "C:\\Users\\rudy7\\IdeaProjects\\Snake\\src\\main\\resources\\snekhead.png";
+        return "C:\\Users\\walls\\IdeaProjects\\GymSnake\\src\\main\\resources\\snekhead.png";
     }
 
 
@@ -307,6 +307,10 @@ public class Snake {
 
     public ArrayList<Item> getBackpack() {
         return backpack;
+    }
+
+    public void clearBackpack() {
+        backpack.clear();
     }
 
     public void reduceToxicity(){
