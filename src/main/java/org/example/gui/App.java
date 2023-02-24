@@ -17,6 +17,7 @@ public class App extends Application {
         stage.setResizable(false);
         stage.setTitle("GymSnake");
         stage.setScene(scene);
+        //tpdp set buttons
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {

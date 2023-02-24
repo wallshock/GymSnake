@@ -179,9 +179,7 @@ public class GameSceneController implements IGuiObserver {
         fadeTransition2.play();
         fadeTransition3.play();
         fadeTransition4.play();
-
-        //todo add popup and buttons to restart or main menu
-        //plus prompt high score
+        //todo prompt high score
     }
 
     public void updateItems(){

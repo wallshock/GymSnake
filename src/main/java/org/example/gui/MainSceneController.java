@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -24,17 +26,42 @@ public class MainSceneController implements Initializable {
 
     @FXML
     private Stage stage;
+    @FXML
+    private ImageView start;
+
+    @FXML
+    private ImageView options;
+
 
     @FXML private AnchorPane ap;
 
-
+//todo add audio music plus sound effects
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        start.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    onStartButtonClicked();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
 
+            }
+        });
+        options.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                settingsPopUp();
+            }
+        });
     }
 
-    @FXML
-    public void onNewSimulationButtonClicked() throws IOException {
+    private void settingsPopUp() {
+        //todo add settings
+    }
+
+    public void onStartButtonClicked() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/game-scene.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1350, 860);
